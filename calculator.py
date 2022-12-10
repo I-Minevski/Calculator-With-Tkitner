@@ -17,6 +17,13 @@ def button_click(number):
 
 def button_clear():
     e.delete(0, END)
+    e.insert(0, '0')
+
+
+def button_decimal():
+    if '.' not in e.get():
+        length = len(e.get())
+        e.insert(length, '.')
 
 
 button7 = Button(root, text='7', padx=40, pady=20, command=lambda: button_click(7)).grid(row=2, column=0)
@@ -33,7 +40,7 @@ button3 = Button(root, text='3', padx=40, pady=20, command=lambda: button_click(
 
 button_AC = Button(root, text='AC', padx=35, pady=20, command=lambda: button_clear()).grid(row=5, column=0)
 button0 = Button(root, text='0', padx=40, pady=20, command=lambda: button_click(0)).grid(row=5, column=1)
-button_point = Button(root, text='.', padx=41.5, pady=20).grid(row=5, column=2)
+button_point = Button(root, text='.', padx=41.5, pady=20, command=lambda: button_decimal()).grid(row=5, column=2)
 
 button_multiply = Button(root, text='x', padx=40, pady=20).grid(row=2, column=3)
 button_subtract = Button(root, text='-', padx=40, pady=20).grid(row=3, column=3)
