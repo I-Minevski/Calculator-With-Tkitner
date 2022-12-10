@@ -67,6 +67,14 @@ def change_sign():
         e.insert(0, result)
 
 
+def percent():
+    global first_number
+    first_number = float(e.get())
+    global operation
+    operation = '%'
+    e.delete(0, END)
+
+
 def equals_to():
     if operation == 'add':
         result = first_number + float(e.get())
@@ -100,6 +108,14 @@ def equals_to():
         else:
             e.insert(0, result)
 
+    if operation == '%':
+        result = first_number * 0.01 * float(e.get())
+        e.delete(0, END)
+        if result.is_integer():
+            e.insert(0, int(result))
+        else:
+            e.insert(0, result)
+
 
 button7 = Button(root, text='7', padx=40, pady=20, command=lambda: button_click(7)).grid(row=2, column=0)
 button8 = Button(root, text='8', padx=40, pady=20, command=lambda: button_click(8)).grid(row=2, column=1)
@@ -123,6 +139,7 @@ button_subtract = Button(root, text='-', padx=40, pady=20, command=lambda: subtr
 button_add = Button(root, text='+', padx=38, pady=20, command=lambda: add()).grid(row=4, column=3)
 button_equals = Button(root, text='=', padx=38, pady=20, command=lambda: equals_to()).grid(row=5, column=3)
 
+button_percent = Button(root, text='%', padx=38, pady=20, command=lambda: percent()).grid(row=1, column=1)
 button_change_sign = Button(root, text='+/-', padx=34, pady=20, command=lambda: change_sign()).grid(row=1, column=2)
 
 root.mainloop()
