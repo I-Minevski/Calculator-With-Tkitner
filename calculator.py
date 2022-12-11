@@ -78,54 +78,65 @@ def percent():
 
 
 def square_root():
-    result = math.sqrt(float(e.get()))
-    e.delete(0, END)
-    if result.is_integer():
-        e.insert(0, int(result))
-    else:
-        e.insert(0, result)
+    try:
+        result = math.sqrt(float(e.get()))
+        e.delete(0, END)
+        if result.is_integer():
+            e.insert(0, int(result))
+        else:
+            e.insert(0, result)
+    except ValueError:
+        e.delete(0, END)
+        e.insert(0, 'Undefined')
 
 
 def equals_to():
-    if operation == 'add':
-        result = first_number + float(e.get())
-        e.delete(0, END)
-        if result.is_integer():
-            e.insert(0, int(result))
-        else:
-            e.insert(0, result)
+    try:
+        if operation == 'add':
+            result = first_number + float(e.get())
+            e.delete(0, END)
+            if result.is_integer():
+                e.insert(0, int(result))
+            else:
+                e.insert(0, result)
 
-    if operation == 'subtract':
-        result = first_number - float(e.get())
-        e.delete(0, END)
-        if result.is_integer():
-            e.insert(0, int(result))
-        else:
-            e.insert(0, result)
+        if operation == 'subtract':
+            result = first_number - float(e.get())
+            e.delete(0, END)
+            if result.is_integer():
+                e.insert(0, int(result))
+            else:
+                e.insert(0, result)
 
-    if operation == 'multiply':
-        result = first_number * float(e.get())
-        e.delete(0, END)
-        if result.is_integer():
-            e.insert(0, int(result))
-        else:
-            e.insert(0, result)
+        if operation == 'multiply':
+            result = first_number * float(e.get())
+            e.delete(0, END)
+            if result.is_integer():
+                e.insert(0, int(result))
+            else:
+                e.insert(0, result)
 
-    if operation == 'divide':
-        result = first_number / float(e.get())
-        e.delete(0, END)
-        if result.is_integer():
-            e.insert(0, int(result))
-        else:
-            e.insert(0, result)
+        if operation == 'divide':
+            result = first_number / float(e.get())
+            e.delete(0, END)
+            if result.is_integer():
+                e.insert(0, int(result))
+            else:
+                e.insert(0, result)
 
-    if operation == '%':
-        result = first_number * 0.01 * float(e.get())
+        if operation == '%':
+            result = first_number * 0.01 * float(e.get())
+            e.delete(0, END)
+            if result.is_integer():
+                e.insert(0, int(result))
+            else:
+                e.insert(0, result)
+    except ValueError:
         e.delete(0, END)
-        if result.is_integer():
-            e.insert(0, int(result))
-        else:
-            e.insert(0, result)
+        e.insert(0, 'Undefined')
+    except ZeroDivisionError:
+        e.delete(0, END)
+        e.insert(0, 'Undefined')
 
 
 button7 = Button(root, text='7', padx=40, pady=20, command=lambda: button_click(7)).grid(row=2, column=0)
